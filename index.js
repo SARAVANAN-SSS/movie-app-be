@@ -1,11 +1,15 @@
 // const express = require("express");//old syntax//type:commonjs
 // const { MongoClient } = require("mongodb"); //old syntax//"type":"commonjs"
 
-import express from "express"//new syntax//"type":"module"
-import { MongoClient } from "mongodb"//new syntax//"type":"module"
+import dotenv from "dotenv"
+import express from "express";//new syntax//"type":"module"
+import { MongoClient } from "mongodb";//new syntax//"type":"module"
 
+dotenv.config();
+console.log(process.env)
 
-const MONGO_URL = "mongodb://localhost:27017"; 
+// const MONGO_URL = "mongodb://localhost:27017"; 
+const MONGO_URL = process.env.MONGO_URL; 
 
 async function createConnection(){
     const client = new MongoClient(MONGO_URL);
