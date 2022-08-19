@@ -20,7 +20,7 @@ async function createConnection(){
 
 const client = await createConnection();
 const app = express();
-const PORT = 9000;
+const PORT = process.env.PORT;
 // const movies = [
 //     {
 //     "id": "104",
