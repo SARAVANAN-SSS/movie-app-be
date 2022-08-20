@@ -1,5 +1,6 @@
 import express from "express";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken"
 import { createUser, genPassword, getUserByName } from "../helper.js";
 
 
@@ -43,7 +44,9 @@ router.post("/login",async(req,res)=>{
         return;
     }
 
-    res.send(isPasswordMatch)
+    const token = jwt.sign({id:userFromDB._id},process.env.SECRET_KEY)
+
+    res.send({ message:"Successfully logged in",token:token})
 
 })
 
