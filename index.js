@@ -4,6 +4,7 @@ import { MongoClient } from "mongodb";//new syntax//"type":"module"
 import { getAllMovies, getMovieById, deleteMovieById, addMovies } from "./helper.js";
 import { moviesRouter } from "./routes/movies.js";
 import { usersRouter } from "./routes/users.js";
+import cors from "cors"
 
 dotenv.config();
 console.log(process.env)
@@ -19,9 +20,11 @@ async function createConnection(){
 export const client = await createConnection();
 const app = express();
 const PORT = process.env.PORT;
-
 app.listen(PORT,(req,res)=>console.log("app is started on Port", PORT))
+
 app.use(express.json())//middleware used to convert all the request body to json
+app.use(cors())
+
 app.get('/',(req,res)=>{
     res.send(`Hello World`)
 })
