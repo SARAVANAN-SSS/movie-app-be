@@ -36,7 +36,7 @@ router.delete("/:id",async(req,res)=>{
 // add movie
 router.post("/",async(req,res)=>{
     const newMovies = req.body ;
-    // db.movies.inserytMany()
+    // db.movies.insertMany()
     const result = await addMovies(newMovies)
     res.send(result)
 })
