@@ -1,5 +1,7 @@
 import { client } from "./index.js";
 import bcrypt from "bcrypt";
+import { ObjectId } from "mongodb";
+
 
 
 export async function getAllMovies(req) {
@@ -14,14 +16,14 @@ export async function getMovieById(id) {
     return await client
         .db("b29wd")
         .collection("movies")
-        .findOne({ id: id });
+        .findOne({ _id: ObjectId(id) });
 }
 
 export async function deleteMovieById(id) {
     return await client
         .db("b29wd")
         .collection("movies")
-        .deleteOne({ id: id });
+        .deleteOne({ _id: ObjectId(id) });
 }
 
 export async function addMovies(newMovies) {
@@ -35,7 +37,7 @@ export async function updateMovieById(id,updateMovie) {
     return await client
         .db("b29wd")
         .collection("movies")
-        .updateOne({id:id},{$set:updateMovie});
+        .updateOne({ _id: ObjectId(id) },{$set:updateMovie});
 }
 
 export async function genPassword(password) {
