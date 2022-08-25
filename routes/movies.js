@@ -44,7 +44,7 @@ router.post("/",async(req,res)=>{
 router.put("/:id",async(req,res)=>{
     const updateMovie = req.body ;
     const { id } = req.params ;
-    console.log(`id is ${id} movie is ${updateMovie}`)
+    // console.log(`id is ${id} movie is ${updateMovie}`)
     let newValue = {
         name: updateMovie.name,
         poster: updateMovie.poster,
