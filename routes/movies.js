@@ -16,7 +16,7 @@ router.get("/",async(req,res)=>{
 
 // send only asked(by id) movie
 router.get("/:id",async(req,res)=>{
-    console.log(req.params);
+    // console.log(req.params);
     const { id } = req.params;
     // db.movies.findOne({id:"100"})
     const movie = await getMovieById(id)
@@ -44,8 +44,17 @@ router.post("/",async(req,res)=>{
 router.put("/:id",async(req,res)=>{
     const updateMovie = req.body ;
     const { id } = req.params ;
+    console.log(`id is ${id} movie is ${updateMovie}`)
+    let newValue = {
+        name: updateMovie.name,
+        poster: updateMovie.poster,
+        rating: updateMovie.rating,
+        summary: updateMovie.summary,
+        trailer: updateMovie.trailer
+    }
+    console.log(updateMovie);
     // db.movies.updateOne({id:"100"},{$set:{rating:8}})
-    const result = await updateMovieById(id,updateMovie)
+    const result = await updateMovieById(id,newValue)
     res.send(result)
 })
 

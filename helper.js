@@ -30,10 +30,11 @@ export async function addMovies(newMovies) {
     return await client
         .db("b29wd")
         .collection("movies")
-        .insertMany(newMovies);
+        .insertOne(newMovies);
 }
 
 export async function updateMovieById(id,updateMovie) {
+    // console.log(`id is ${id} movie is ${updateMovie}`)
     return await client
         .db("b29wd")
         .collection("movies")
